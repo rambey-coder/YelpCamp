@@ -58,7 +58,7 @@ const Home = () => {
                                       <p>See locations to all camps</p>
                                   </div>
 
-                                  <Link to='search-page' className='home-btn'>
+                                  <Link to='/Search-Page' className='home-btn'>
                                       View Campgrounds
                                   </Link>
 
