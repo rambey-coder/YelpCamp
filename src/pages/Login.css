@@ -147,7 +147,8 @@ div.login-content > p {
     color: rgb(95, 95, 95);
 }
 
-div.login-content > a:nth-child(6){
+div.login-content > a:nth-child(5),
+div.login-content > a {
     font-size: 13px;
     font-weight: bold;
     color: rgb(47, 86, 214);

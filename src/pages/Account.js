@@ -1,10 +1,9 @@
 import React from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 
-const Login = () => {
-
+const Account = () => {
   return (
     <div className="login-page-container">
 
@@ -31,21 +30,26 @@ const Login = () => {
 
                 <div className="login-content">
                     <h1>Start exploring camps from all around the world.</h1>
-                  <form action="#" method="get" className='submt-input'>
-                    <div className="float-input">
+                    <form action="#" method="get" className='submit-input'>
+                        <div className="float-input">
                             <input type="text" className='user' />
                             
                             <label htmlFor="user" className='label'>Username</label>
+                        </div>
+                        <div className="float-input">
+                            <input type="email" className='user' />
+                            
+                            <label htmlFor="user" className='label'>Email</label>
                         </div>
                         <div className="float-input">
                             <input type="password" className='user' />
 
                             <label htmlFor="user" className='label'>Password</label>
                         </div>
-                    <Link to='/' className='login-home'>Login</Link>
-                  </form>
+                        <Link to='/' className='login-home'>Create an account</Link>
+                    </form>
 
-                    <p>Not a user yet?</p> <Link to='/create-account'>Create an account</Link>
+                    <p>Already a user?</p> <Link to='/Login-page'>Sign in</Link>
                 </div>
         </div>
         </div>
@@ -53,4 +57,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Account
