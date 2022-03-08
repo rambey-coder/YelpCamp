@@ -154,6 +154,14 @@ div.login-content > a {
     color: rgb(47, 86, 214);
 }
 
+.shown {
+    position: absolute;
+    right: 40px;
+    top: 35px;
+    color: #252525;
+    cursor: pointer;
+}
+
 @media (max-width: 966px) {
     .login-page-container {
         flex-direction: column-reverse;

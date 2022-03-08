@@ -63,6 +63,9 @@ const items = [
 // ]
 
 const Campsearch = () => {
+    const [click, setClick] = useState(false)
+    const handleClick = () => setClick(!click)
+    
     const [searches, setSearches] = useState('');
     const handleChange = (e) => {
         e.preventDefault();
@@ -81,7 +84,7 @@ const Campsearch = () => {
                     </Link>
                 </div>
 
-                <div className="login-container">
+                <div className={click ? "login-container active" : "login-container"}>
                     <Link to='/Login-page' className='login-link'>
                         Login
                     </Link>
@@ -90,6 +93,11 @@ const Campsearch = () => {
                         Create Account
                     </Link>
                 </div>
+
+                <div className="icon" onClick={handleClick}>
+                    <i className={click ? 'fas fa-times' : "fas fa-bars"}/>
+                </div>
+
             </div>
 
             <div className="searchbar-container">
@@ -145,6 +153,9 @@ const Campsearch = () => {
                    })
                }
             </div> */}
+            <div className="logo-search">
+                    <img src="./Logo.svg" alt="camp-logo" className='nav-logo'/>
+                </div>
         </div>
     </>
     )

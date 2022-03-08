@@ -7,9 +7,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
     width: 100%;
     padding: 20px 0;
     height: 80px;
+}
+
+.icon {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    display: none;
+}
+
+.icon > i {
+    font-size: 25px;
+    color: #f0e3e3;
 }
 
 .logo-search {
@@ -42,6 +56,7 @@
 .login-container {
     display: block;
     display: flex;
+    flex-direction: row;
     align-items: center;
 }
 
@@ -150,6 +165,7 @@
     margin-top: 2rem;
     display: flex;
     flex-flow: row wrap;
+    margin-bottom: 40px;
     /* gap: 30px; */
     /* align-items: center; */
     justify-content: center;
@@ -215,15 +231,39 @@
     color: #fff;
 }
 
+.active {
+    display: block;
+}
+
 @media (max-width: 970px) {
     .search-container-general {
         width: 80%;
         margin: auto;
     }
 
-    /* .login-container {
+    .login-container {
         display: none;
-    } */
+        position: absolute;
+        flex-direction: column;
+        /* right: 50%; */
+        left: 40%;
+        top: 48px;
+        width: 60%;
+        text-align: center;
+        margin: auto;
+        background: #00000067;
+        padding: 20px;
+        color: #fff;
+        border-radius: 8px;
+    }
+
+    .active {
+        display: block;
+    }
+
+    .icon {
+        display: block;
+    }
 
     .search-content {
         gap: 10px;
