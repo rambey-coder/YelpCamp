@@ -1,0 +1,21 @@
+.play-container {
+    width: 72%;
+    margin: auto;
+}
+
+.add-new-camp {
+    width: 50%;
+    margin: auto;
+    margin-top: 3rem;
+}
+
+.text-area {
+    resize: none;
+    height: 20%;
+}
+
+@media (max-width: 840px) {
+    .add-new-camp {
+        width: 80%;
+    }
+}

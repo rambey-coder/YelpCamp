@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Campsearch from './pages/Campsearch';
 import Login from './pages/Login';
 import Account from './pages/Account';
+import Playground from './pages/Playground';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/Search-Page' element={<Campsearch />}/>
         <Route path='/Login-page' element={<Login />}/>
         <Route path='/create-account' element={<Account />} />
+        <Route path='/add-play-ground' element={<Playground />}/>
       </Routes>
     </Router>
     </>
