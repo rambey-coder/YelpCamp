@@ -117,7 +117,7 @@ const Campsearch = () => {
             <div className="search-content">
                {
                    items 
-                   .filter((i) => i.Tittle.toLowerCase().includes(searches))
+                   .filter((i) => i.Tittle.toLowerCase().includes(searches.toLowerCase()))
                    .map((result, index) => {
                        return (
                            <div className="results" key={index}>
