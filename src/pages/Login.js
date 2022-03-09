@@ -1,7 +1,7 @@
 import React from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState } from 'react';
 
 const Login = () => {
     const [value, setValue] = useState({

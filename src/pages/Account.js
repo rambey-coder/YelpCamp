@@ -2,7 +2,7 @@ import React from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
 import  { useState } from 'react'
-import { useForm } from 'react-hook-form'
+// import { useForm } from 'react-hook-form'
 
 const Account = () => {
     const [value, setValue] = useState({
@@ -19,7 +19,8 @@ const Account = () => {
 
     const handlePasswordChange = (prop) => (e) => {
         setValue({...value, [prop]: e.target.value})
-    };
+    }
+
   return (
     <div className="login-page-container">
 
