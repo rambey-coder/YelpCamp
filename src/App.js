@@ -7,8 +7,6 @@ import Login from './pages/Login';
 import Account from './pages/Account';
 import Playground from './pages/Playground';
 
-
-
 function App() {
   return (
     <>

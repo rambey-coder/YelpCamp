@@ -5,22 +5,10 @@ import  { useState } from 'react'
 // import { useForm } from 'react-hook-form'
 
 const Account = () => {
-    const [value, setValue] = useState({
-        password: '',
-        showPassword: false
-    })
-    const handleClickShowPassword = () => {
-        setValue({...value, showPassword: !value.showPassword})
+    const [value, setValue] = useState(false);
+    const togglePassword = () => {
+        setValue(!value)
     }
-
-    const handleMouseDownPassword = (e) => {
-        e.preventDefault()
-    }
-
-    const handlePasswordChange = (prop) => (e) => {
-        setValue({...value, [prop]: e.target.value})
-    }
-
   return (
     <div className="login-page-container">
 
@@ -59,17 +47,14 @@ const Account = () => {
                             <label htmlFor="user" className='label'>Email</label>
                         </div>
                         <div className="float-input">
-                              <input type={value.showPassword ? 'text' : "password"} 
-                            onChange={handlePasswordChange("password")}
-                            value={value.password}
-                            className='user' />
+                        <input type={value ? "text" : "password"}
+                        className='user' />
 
 
                             <label htmlFor="user" className='label'>Password</label>
 
-                            <i className={value.showPassword ? "fas fa-eye shown" : 'fas fa-eye-slash shown'}
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}/>
+                            <i className={value ? "fas fa-eye shown" : 'fas fa-eye-slash shown'}
+                            onClick={togglePassword}/>
                         </div>
                         <Link to='/' className='login-home'>Create an account</Link>
                     </form>

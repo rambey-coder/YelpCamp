@@ -1,24 +1,12 @@
 import React from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
-import { useState } from 'react';
+import { useState } from 'react'
 
 const Login = () => {
-    const [value, setValue] = useState({
-        password: '',
-        showPassword: false
-    })
-
-    const handleClickShowPassword = () => {
-        setValue({...value, showPassword: !value.showPassword})
-    }
-
-    const handleMouseDownPassword = (e) => {
-        e.preventDefault()
-    }
-
-    const handlePasswordChange = (prop) => (e) => {
-        setValue({...value, [prop]: e.target.value})
+    const [value, setValue] = useState(false);
+    const togglePassword = () => {
+        setValue(!value)
     }
   return (
     <div className="login-page-container">
@@ -57,15 +45,13 @@ const Login = () => {
                             <label htmlFor="user" className='label'>Username</label>
                         </div>
                         <div className="float-input">
-                            <input type={value.showPassword ? 'text' : "password"} 
-                            onChange={handlePasswordChange("password")}
-                            value={value.password}
+                            <input type={value ? "text" : "password"}
                             className='user' />
 
                             <label htmlFor="user" className='label'>Password</label>
-                            <i className={value.showPassword ? "fas fa-eye shown" : 'fas fa-eye-slash shown'}
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}/>
+                            
+                            <i className={value ? "fas fa-eye shown" : 'fas fa-eye-slash shown'}
+                            onClick={togglePassword}/>
                         </div>
                     <Link to='/' className='login-home'>Login</Link>
                   </form>
