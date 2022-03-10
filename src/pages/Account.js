@@ -2,13 +2,38 @@ import React from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
 import  { useState } from 'react'
-// import { useForm } from 'react-hook-form'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
 
 const Account = () => {
     const [value, setValue] = useState(false);
     const togglePassword = () => {
         setValue(!value)
     }
+
+    const formik = useFormik({
+        initialValues: {
+            username: '',
+            email: '',
+            password: ''
+        },
+
+        validationSchema: Yup.object({
+            username: Yup.string().max(6, 'Must be 6 characters or more').required('Required'),
+
+            email: Yup.string().email('Invalid mail address').required('Required'),
+
+            password: Yup.string().max(8, 'Must be 6 characters').required('Required')
+        }),
+
+        onSubmit: values => {
+            // console.log(values)
+            alert('account created successfully')
+        }
+
+    });
+    console.log(formik.errors)
   return (
     <div className="login-page-container">
 
@@ -35,28 +60,49 @@ const Account = () => {
 
                 <div className="login-content">
                     <h1>Start exploring camps from all around the world.</h1>
-                    <form action="#" method="get" className='submit-input'>
+                    <form action="#" method="get" className='submit-input' 
+                    onSubmit={formik.handleSubmit}>
                         <div className="float-input">
-                            <input type="text" className='user' />
+                            <input type="text"
+                             className='user'
+                             name='username'
+                             onChange={formik.handleChange}
+                             onBlur={formik.handleBlur}
+                             value={formik.values.username}  />
+
+                            {formik.touched.username &&  formik.errors.username ? <p className='error'>{formik.errors.username}</p> : '' }
                             
                             <label htmlFor="user" className='label'>Username</label>
                         </div>
                         <div className="float-input">
-                            <input type="email" className='user' />
+                            <input type="email"
+                             className='user'
+                             name='email'
+                             onChange={formik.handleChange}
+                             onBlur={formik.handleBlur}
+                             value={formik.values.email}  />
+
+                            { formik.touched.email && formik.errors.email ? <p className='error'>{formik.errors.email}</p> : '' }
                             
                             <label htmlFor="user" className='label'>Email</label>
                         </div>
                         <div className="float-input">
                         <input type={value ? "text" : "password"}
-                        className='user' />
+                        className='user'
+                        name='password'
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.password} />
 
+                            { formik.touched.password && formik.errors.password ? <p className='error'>{formik.errors.password}</p> : '' }
 
                             <label htmlFor="user" className='label'>Password</label>
 
                             <i className={value ? "fas fa-eye shown" : 'fas fa-eye-slash shown'}
                             onClick={togglePassword}/>
                         </div>
-                        <Link to='/' className='login-home'>Create an account</Link>
+                        {/* <Link to='/' className='login-home'>Create an account</Link> */}
+                        <button className="login-home" type='submit'>Create an account</button>
                     </form>
 
                     <p>Already a user?</p> <Link to='/Login-page'>Sign in</Link>

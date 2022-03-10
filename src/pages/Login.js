@@ -1,13 +1,56 @@
-import React from 'react'
-import './Login.css'
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import React from 'react';
+import './Login.css';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
+
 
 const Login = () => {
     const [value, setValue] = useState(false);
     const togglePassword = () => {
         setValue(!value)
     }
+
+    // const validate = values => {
+    //     const errors = {}
+
+    //     if(!values.username) {
+    //         errors.username = 'required'
+    //     } else if(values.username.length < 6){
+    //         errors.username = 'Must be 6 characters'
+    //     }
+
+    //     if(!values.password) {
+    //         errors.password = 'required'
+    //     } else if(values.password.length < 8){
+    //         errors.password = 'Must be 8 characters'
+    //     }
+
+    //     return errors;
+       
+    // }
+
+    const formik = useFormik ({
+        initialValues: {
+            username: '',
+            password: ''
+        },
+        // validate,
+
+        validationSchema: Yup.object({
+            username: Yup.string().max(6, 'Must be 6 characters or more').required('Required'),
+
+            password: Yup.string().max(8, 'Must be 6 characters').required('Required')
+        }),
+
+        onSubmit: (values) => {
+            alert('submmission successfully') 
+        }
+    })
+
+    
   return (
     <div className="login-page-container">
 
@@ -38,22 +81,37 @@ const Login = () => {
 
                 <div className="login-content">
                     <h1>Start exploring camps from all around the world.</h1>
-                  <form action="#" method="get" className='submt-input'>
+                  <form action="#" method="get" className='submt-input' onSubmit={formik.handleSubmit}>
                     <div className="float-input">
-                            <input type="text" className='user' />
+                            <input type="text" 
+                            className='user' 
+                            name='username' 
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.username}/>
+
+                            {formik.touched.username && formik.errors.username ? <p className='error'>{formik.errors.username}</p> : ''}
                             
                             <label htmlFor="user" className='label'>Username</label>
                         </div>
                         <div className="float-input">
                             <input type={value ? "text" : "password"}
-                            className='user' />
+                            className='user'
+                            name='password' 
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.password}/>
+
+                            {formik.touched.password && formik.errors.password ?
+                             <p className='error'>{formik.errors.password}</p> : ''}
 
                             <label htmlFor="user" className='label'>Password</label>
                             
                             <i className={value ? "fas fa-eye shown" : 'fas fa-eye-slash shown'}
                             onClick={togglePassword}/>
                         </div>
-                    <Link to='/' className='login-home'>Login</Link>
+                    {/* <Link to='/' className='login-home'>Login</Link> */}
+                    <button className='login-home' type='submit'>Login</button>
                   </form>
 
                     <p>Not a user yet?</p> <Link to='/create-account'>Create an account</Link>
