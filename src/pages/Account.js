@@ -1,6 +1,6 @@
 import React from 'react'
 import './Login.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import  { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -31,9 +31,18 @@ const Account = () => {
             // console.log(values)
             alert('account created successfully')
         }
-
     });
-    console.log(formik.errors)
+
+    const navigate = useNavigate()
+
+    const handlenavigate = () => {
+        if(formik.values.password !== '' || formik.values.username !== '' || formik.values.email !== '') {
+            navigate('/')
+        } else {
+            alert('fields are empty')
+        }
+    }
+
   return (
     <div className="login-page-container">
 
@@ -102,7 +111,7 @@ const Account = () => {
                             onClick={togglePassword}/>
                         </div>
                         {/* <Link to='/' className='login-home'>Create an account</Link> */}
-                        <button className="login-home" type='submit'>Create an account</button>
+                        <button className="login-home" type='submit' onClick={handlenavigate}>Create an account</button>
                     </form>
 
                     <p>Already a user?</p> <Link to='/Login-page'>Sign in</Link>

@@ -2,44 +2,7 @@ import React, { useState } from 'react'
 import './Campsearch.css';
 import { Link } from 'react-router-dom';
 
-const items = [
-    {
-        Image: './Mount-Ulap.png',
-        Tittle: 'Mount Ulap',
-        Description: "One of the most famous hikes in Benguet Mt Ulap Itogon",
-        button: "View Campground"
-    },
-    {
-        Image: './Calagus Islands.jpg',
-        Tittle: 'Calagus Islands',
-        Description: "A paradise of islands that can rival the white sand beauty of Boracay",
-        button: "View Campground"
-    },
-    {
-        Image: './Onay Beach.jpg',
-        Tittle: 'Onay Beach',
-        Description: "This is one of the best camping sites, beautiful and pristine.",
-        button: "View Campground"
-    },
-    {
-        Image: './Latik Riverside.jpg',
-        Tittle: 'Latik Riverside',
-        Description: "Philippines is one of the most dazzling countries in all Asia.",
-        button: "View Campground"
-    },
-    {
-        Image: './Buloy Springs.jpg',
-        Tittle: 'Buloy Springs',
-        Description: "This is one of the best beach camping sites, beautiful and pristine.",
-        button: "View Campground"
-    },
-    {
-        Image: './Seven.jpg',
-        Tittle: 'Seven Sisters Waterfall',
-        Description: "The Seven Sisters is the 39th tallest waterfall in Norway",
-        button: "View Campground"
-    }
-];
+
 
 // const item1 = [
 //     {
@@ -62,7 +25,7 @@ const items = [
 //     }
 // ]
 
-const Campsearch = () => {
+const Campsearch = ({ items, setDirect }) => {
     const [click, setClick] = useState(false)
     const handleClick = () => setClick(!click)
     
@@ -125,7 +88,8 @@ const Campsearch = () => {
                                <h4>{result.Tittle}</h4>
                                <p>{result.Description}</p>
 
-                               <Link to='/camp-page' className='ground-link'>
+                               <Link to='/camp-page' className='ground-link'
+                               onClick={() => {setDirect(items.filter(i => i.Tittle === result.Tittle))}}>
                                    {result.button}
                                </Link>
                            </div>

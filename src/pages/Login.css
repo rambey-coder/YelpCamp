@@ -127,7 +127,7 @@ div > span > p {
     top: 50%;
     left: 1rem;
     transform: translateY(-50%);
-    transform: color 250ms ease-in-out, top 250ms ease-in-out;
+    transition: 500ms ease-in-out;
     text-transform: capitalize;
 }
 
